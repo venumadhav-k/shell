@@ -12,6 +12,7 @@ if [ $? -ne 0 ]; then
     exit
 else
    echo "installing Nginx....SUCCESS"
+   echo "installed package name && Version:"
    apt list --installed | grep -i nginx 
 
 fi       
