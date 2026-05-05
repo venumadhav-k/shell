@@ -22,7 +22,7 @@ fi
   # Install nginx
   apt-get update &>> $LOG_FILE 
   apt-get install nginx -y &>> $LOG_FILE
-  VALIDATE $? "Installing Mysql"
+  VALIDATE $? "Installing nginx"
    # Install nodejs   
   apt-get update &>> $LOG_FILE 
   apt-get install nodejs -y &>> $LOG_FILE
