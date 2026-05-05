@@ -20,9 +20,9 @@ fi
  }  
   # $? :Exit status
   # Install MYSQL
-  apt-get update &>> $LOG_FILE 
-  apt-get install mysql-server -y &>> $LOG_FILE
-  VALIDATE $? "Installing Mysql"
+  #apt-get update &>> $LOG_FILE 
+  #apt-get install mysql-server -y &>> $LOG_FILE
+  #VALIDATE $? "Installing Mysql"
    # Install nodejs   
  apt-get update &>> $LOG_FILE 
  apt-get install nodejs -y &>> $LOG_FILE
