@@ -1,7 +1,7 @@
 #!/bin/bash
 USER_ID=$(id -u)
 LOG_FOLDER="/var/logs/shell"
-LOG_FILE="/var/logs/shell/$0.log"
+LOG_FILE="$LOG_FOLDER/$(basename $0).log"
 mkdir -p $LOG_FOLDER
 
 if [ $USER_ID -ne 0 ]; then
@@ -18,12 +18,12 @@ fi
     fi 
          
  }  
-  # $? :Exit status
-  # Install MYSQL
-  #apt-get update &>> $LOG_FILE 
-  #apt-get install mysql-server -y &>> $LOG_FILE
-  #VALIDATE $? "Installing Mysql"
+  # $? :last command Exit status
+  # Install nginx
+  apt-get update &>> $LOG_FILE 
+  apt-get install nginx -y &>> $LOG_FILE
+  VALIDATE $? "Installing Mysql"
    # Install nodejs   
- apt-get update &>> $LOG_FILE 
- apt-get install nodejs -y &>> $LOG_FILE
- VALIDATE $? "Installing nodejs"  
+  apt-get update &>> $LOG_FILE 
+  apt-get install nodejs -y &>> $LOG_FILE
+  VALIDATE $? "Installing nodejs"  
