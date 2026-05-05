@@ -4,7 +4,7 @@ LOG_FOLDER="/var/log/shell"
 LOG_FILE="/var/log/shell/$(basename $0).log"
 
 sudo mkdir -p $LOG_FOLDER
-
+sudo chmod 666 $LOG_FILE
 if [ $USER_ID -ne 0 ]; then
   echo "Script must be executed with root user" | tee -a $LOG_FILE
   exit 1

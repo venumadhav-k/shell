@@ -15,7 +15,7 @@ if [ "$USER_ID" -ne 0 ]; then
 else
 
 
-echo "file is :" $LOG_FILE
+  echo "file is :" $LOG_FILE
   echo "Removing Packages" | tee -a $LOG_FILE
   sudo bash -c "apt purge  nginx -y &>> $LOG_FILE"
   sudo bash -c "apt purge  nodejs -y &>> $LOG_FILE"
