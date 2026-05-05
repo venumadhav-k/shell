@@ -13,8 +13,8 @@ mkdir -p $LOG_FOLDER
 
 echo "file is :" $LOG_FILE
   echo "Removing Packages"
-  apt purge -y nginx &>> $LOG_FILE
-  apt purge -y nodejs &>> $LOG_FILE
+  apt purge  nginx -y &>> $LOG_FILE
+  apt purge  nodejs -y &>> $LOG_FILE
   apt autoremove -y &>> $LOG_FILE
 
   echo "Removed packages"
