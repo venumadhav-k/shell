@@ -2,21 +2,26 @@
 USER_ID=$(id -u)
 LOG_FOLDER="/var/log/shell"
 LOG_FILE="/var/log/shell/$(basename $0).log"
+R="\e[31m"
+G="\e[32m"
+B="\e[34m"
+N="\e[0m"
 
 sudo mkdir -p $LOG_FOLDER
 sudo chmod 666 $LOG_FILE
+
 if [ $USER_ID -ne 0 ]; then
-  echo "Script must be executed with root user" | tee -a $LOG_FILE
+  echo -e "$B Script must be executed with root user $N" | tee -a $LOG_FILE
   exit 1
 fi
  # mkdir -p $LOG_FOLDER
 
  VALIDATE(){
     if [ $1 -ne 0 ]; then
-      echo "$2.....FAILURE" | tee -a $LOG_FILE
+      echo -e "$2.....$R FAILURE $N" | tee -a $LOG_FILE
       exit 1
     else
-      echo "$2....SUCCESS" | tee -a $LOG_FILE
+      echo -e "$2....$G SUCCESS $N" | tee -a $LOG_FILE
     fi 
          
  }  
