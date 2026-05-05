@@ -10,6 +10,8 @@ if [ "$USER_ID" -ne 0 ]; then
   exit 1
 else
 mkdir -p $LOG_FOLDER
+
+echo "file is :" $LOG_FILE
   echo "Removing Packages"
   apt purge -y nginx &>> $LOG_FILE
   apt purge -y nodejs &>> $LOG_FILE
