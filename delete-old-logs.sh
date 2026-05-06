@@ -14,7 +14,14 @@ fi
 #     echo "deleting files : $filepath"
 #  done <<< $FILES_TO_DELETE
 
+if [ -z "$FILES_TO_DELETE" ]; then
+    echo "No .log files older than 14 days"
+    exit 0
+fi
+
+
 while IFS= read -r filepath; do
     echo "Deleting file: $filepath"
-   rm -f "$filepath"
+    rm -f "$filepath"
+    echo "Deleted Files: $filepath"
 done <<< "$FILES_TO_DELETE"
