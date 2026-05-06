@@ -1,4 +1,8 @@
 #!/bin/bash
+R="\e[31m"
+G="\e[32m"
+B="\e[34m"
+N="\e[0m"
 
 LOG_FOLDER=/home/venumadhavk33/app-log
 
@@ -15,13 +19,13 @@ fi
 #  done <<< $FILES_TO_DELETE
 
 if [ -z "$FILES_TO_DELETE" ]; then
-    echo "No .log files older than 14 days"
+    echo -e "$B No .log files older than 14 days $N"
     exit 0
 fi
 
 
 while IFS= read -r filepath; do
-    echo "Deleting file: $filepath"
+    echo -e "$G Deleting file: $filepath $N"
     rm -f "$filepath"
-    echo "Deleted Files: $filepath"
+    echo -e "$R Deleted Files: $filepath $N"
 done <<< "$FILES_TO_DELETE"
