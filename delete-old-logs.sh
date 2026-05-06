@@ -11,5 +11,5 @@ fi
  #echo "Files Name: $FILES_TO_DELETE" 
 
  while IFS=read -r filepath; do
- echo "deleting files : $filepath"
+    echo "deleting files : $filepath"
  done <<< $FILES_TO_DELETE
