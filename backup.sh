@@ -40,7 +40,7 @@ log(){
         echo "Destination Directory: $DEST_DIR does not exist"
     exit 1
  fi
- FILES=$(find $LOG_FOLDER -name "*.log" -type f -mtime +$DAYS)
+ FILES=$(find $SOURCE_DIR -name "*.log" -type f -mtime +$DAYS)
 
  log "Backup started"
  log "Source Directory: $SOURCE_DIR"  
@@ -55,6 +55,6 @@ if [ -z "$FILES" ]; then
     TIMESTAMP=$(date +%F-%H-%M-%S)
     ZIP_FILE_NAME="$DEST_DIR/app-log-$TIMESTAMP.tar.gz"
     echo "Archive file anme: $ZIP_FILE_NAME"
-    echo "$FILES" | tar -czvf ZIP_FILE_NAME.gzip -T -
-    #FILES=$(find "$LOG_FOLDER" -name "*.log" -type f -mtime +"$DAYS") | tar -zcvf  $ZIP_FILE_NAME.gzip  
+    #echo "$FILES" | tar -czvf ZIP_FILE_NAME.gzip -T -
+    find "$SOURCE_DIR" -name "*.log" -type f -mtime +"$DAYS" | tar -zcvf  $ZIP_FILE_NAME.gzip  
 fi  
