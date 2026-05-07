@@ -24,7 +24,7 @@ if [ $USER_ID -ne 0 ]; then
  }
 
 log(){
-    echo "$(date +%F-%H:%M:%S) | $1 | tee -a $LOG_FILE"
+    echo "$(date +%F-%H:%M:%S) | $1" | tee -a $LOG_FILE
 }
 
  if [ $# -lt 2 ]; then
