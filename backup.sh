@@ -56,6 +56,6 @@ if [ -z "$FILES" ]; then
     ZIP_FILE_NAME="$DEST_DIR/app-log-$TIMESTAMP.tar.gz"
     echo "Archive file anme: $ZIP_FILE_NAME"
     #echo "$FILES" | tar -czvf ZIP_FILE_NAME.gzip -T -
-    echo "$FILES"| tar -zcvf  "$ZIP_FILE_NAME" 
+    echo "$FILES"| tar -zcvf  "$ZIP_FILE_NAME" -T -
     #find $SOURCE_DIR -name "*.log" -type f -mtime +$DAYS | tar -zcvf  $ZIP_FILE_NAME  
 fi  
