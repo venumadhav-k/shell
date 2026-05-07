@@ -56,15 +56,18 @@ if [ -z "$FILES" ]; then
     ZIP_FILE_NAME="$DEST_DIR/app-log-$TIMESTAMP.tar.gz"
     echo "Archive file anme: $ZIP_FILE_NAME"
     "$FILES"| tar -zcvf  "$ZIP_FILE_NAME" -T -
+
     #find $SOURCE_DIR -name "*.log" -type f -mtime +$DAYS | tar -zcvf  $ZIP_FILE_NAME  -T -
     if [ -f $ZIP_FILE_NAME ]; then
       log "Archival is ... $G SUCCESS $N" 
+
       while IFS= read -r filepath; do
       echo -e "$G Deleting file: $filepath $N"
       rm -f "$filepath"
       echo -e "$R Deleted Files: $filepath $N"
-       done <<< "$FILES"
+      done <<< "$FILES"
     else
       log "Archival is ... $R SFAULURES $N"
-      exit 1  
+      exit 1
+    fi    
 fi  
