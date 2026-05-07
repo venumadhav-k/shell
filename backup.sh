@@ -23,7 +23,7 @@ if [ $USER_ID -ne 0 ]; then
  mkdir -p $LOG_FOLDER
 
  USAGE(){
-    log "USAGE: sudo backup <SOURCE_DIR> <DEST_DIR> <DAYS>[default 14 days]"
+    log "${R}USAGE: sudo backup <SOURCE_DIR> <DEST_DIR> <DAYS>[default 14 days]${N}"
     exit 1
  }
 
