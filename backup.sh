@@ -5,8 +5,8 @@ G="\e[32m"
 B="\e[34m"
 N="\e[0m"
 
-LOG_FOLDER="/home/venumadhavk33/shell"
-LOG_FILE="/home/venumadhavk33/shell/backup.log"
+LOG_FOLDER="/home/venumadhavk33/app-log"
+LOG_FILE="/home/venumadhavk33/app-log/backup.log"
 SOURCE_DIR=$1
 DEST_DIR=$2
 DAYS=${3:-14} # 14 days is the default value, if user not supplied
@@ -29,4 +29,20 @@ log(){
 
  if [ $# -lt 2 ]; then
     USAGE
- fi   
+ fi  
+
+ if [ ! -d $SOURCE_DIR ]; then
+        echo "Source Directory: $SOURCE_DIR does not exist"
+    exit 1
+ fi
+
+ if [ ! -d $DEST_DIR ]; then
+        echo "Destination Directory: $DEST_DIR does not exist"
+    exit 1
+ fi
+ FILES_TO_DELETE=$(find $LOG_FOLDER -name "*.log" -type f -mtime +14)
+
+ log "Backup started"
+ log "Source Directory: $SOURCE_DIR"  
+ log "Desination Directory: $DEST_DIR" 
+ log "Days: $DAYS"     
