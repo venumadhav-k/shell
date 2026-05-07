@@ -49,7 +49,7 @@ log(){
 
  # If no files found
 if [ -z "$FILES" ]; then
-    log  "${B}No .log files to archive${N}  ${R}SKIPPING${N}"
+    echo -e "${B}No .log files to archive${N}  ${R}SKIPPING${N}"
  else
     log "files found to archive : $FILES"
     TIMESTAMP=$(date +%F-%H-%M-%S)
