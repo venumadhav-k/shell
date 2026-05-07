@@ -59,7 +59,7 @@ if [ -z "$FILES" ]; then
 
     #find $SOURCE_DIR -name "*.log" -type f -mtime +$DAYS | tar -zcvf  $ZIP_FILE_NAME  -T -
     if [ -f $ZIP_FILE_NAME ]; then
-      log -e "Archival is ... $G SUCCESS $N" 
+      log  "Archival is ... ${G}SUCCESS${N}" 
 
       while IFS= read -r filepath; do
       echo -e "$G Deleting file: $filepath $N"
@@ -67,7 +67,7 @@ if [ -z "$FILES" ]; then
       echo -e "$R Deleted Files: $filepath $N"
       done <<< "$FILES"
     else
-      log "Archival is ... $R SFAULURES $N"
+      log "Archival is ... ${R}FAULURE${N}"
       exit 1
     fi    
 fi  
