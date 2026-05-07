@@ -27,8 +27,6 @@ if [ $USER_ID -ne 0 ]; then
     exit 1
  }
 
-
-
  if [ $# -lt 2 ]; then
     USAGE
  fi  
@@ -39,7 +37,7 @@ if [ $USER_ID -ne 0 ]; then
  fi
 
  if [ ! -d $DEST_DIR ]; then
-        echo "Destination Directory: $DEST_DIR does not exist"
+        log "Destination Directory: $DEST_DIR does not exist"
     exit 1
  fi
  FILES=$(find $SOURCE_DIR -name "*.log" -type f -mtime +$DAYS)
@@ -51,7 +49,7 @@ if [ $USER_ID -ne 0 ]; then
 
  # If no files found
 if [ -z "$FILES" ]; then
-    log -e "${B}No .log files to archive${N}  ${R}SKIPPING${N}"
+    log  "${B}No .log files to archive${N}  ${R}SKIPPING${N}"
  else
     log "files found to archive : $FILES"
     TIMESTAMP=$(date +%F-%H-%M-%S)
@@ -64,9 +62,9 @@ if [ -z "$FILES" ]; then
       log  "Archival is ... ${G}SUCCESS${N}" 
 
       while IFS= read -r filepath; do
-      log -e "$G Deleting file: $filepath $N"
+      log  "$G Deleting file: $filepath $N"
       rm -f "$filepath"
-      log -e "$R Deleted Files: $filepath $N"
+      log  "$R Deleted Files: $filepath $N"
       done <<< "$FILES"
     else
       log "Archival is ... ${R}FAULURE${N}"
