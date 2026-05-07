@@ -18,6 +18,7 @@ fi
 #     echo "deleting files : $filepath"
 #  done <<< $FILES_TO_DELETE
 
+# If no files found
 if [ -z "$FILES_TO_DELETE" ]; then
     echo -e "$B No .log files older than 14 days $N"
     exit 0
@@ -29,3 +30,9 @@ while IFS= read -r filepath; do
     rm -f "$filepath"
     echo -e "$R Deleted Files: $filepath $N"
 done <<< "$FILES_TO_DELETE"
+
+
+#sudo bash /home/venumadhavk33/shell/delete-old-logs.sh
+
+#* * * * * echo "cronjob...." >> /home/venumadhavk33/cron.log 2>&1
+#* * * * * /usr/bin/bash /home/venumadhavk33/shell/delete-old-logs.sh >> /home/venumadhavk33/cron.log 2>&1
