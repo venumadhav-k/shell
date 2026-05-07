@@ -24,7 +24,7 @@ if [ $USER_ID -ne 0 ]; then
  }
 
 log(){
-    echo "$(date +%F-%H:%M:%S) | $1" | tee -a $LOG_FILE
+    echo "$(date +%F-%H-%M-%S) | $1" | tee -a $LOG_FILE
 }
 
  if [ $# -lt 2 ]; then
@@ -40,7 +40,7 @@ log(){
         echo "Destination Directory: $DEST_DIR does not exist"
     exit 1
  fi
- FILES=$(find $LOG_FOLDER -name "*.log" -type f -mtime +14)
+ FILES=$(find $LOG_FOLDER -name "*.log" -type f -mtime +$DAYS)
 
  log "Backup started"
  log "Source Directory: $SOURCE_DIR"  
@@ -49,6 +49,11 @@ log(){
 
  # If no files found
 if [ -z "$FILES" ]; then
-    log  "$B No .log files to archive  $Y SKIPPING"
-    
+    log  "$B No .log files to archive  $R SKIPPING"
+ else
+    log "files found to archive : $FILES"
+    TIMESTAMP=$(date +%F-%H-%M-%S)
+    ZIP_FILE_NAME="DEST_DIR/app-log-$TIMESTAMP.tar.gz"
+    echo "Archive file anme: $ZIP_FILE_NAME"
+    FILES=$(find $LOG_FOLDER -name "*.log" -type f -mtime +$DAYS) | tar zcvf  ZIP_FILE_NAME.gzip  
 fi  
