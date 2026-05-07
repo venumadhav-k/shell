@@ -40,9 +40,15 @@ log(){
         echo "Destination Directory: $DEST_DIR does not exist"
     exit 1
  fi
- FILES_TO_DELETE=$(find $LOG_FOLDER -name "*.log" -type f -mtime +14)
+ FILES=$(find $LOG_FOLDER -name "*.log" -type f -mtime +14)
 
  log "Backup started"
  log "Source Directory: $SOURCE_DIR"  
  log "Desination Directory: $DEST_DIR" 
- log "Days: $DAYS"     
+ log "Days: $DAYS"   
+
+ # If no files found
+if [ -z "$FILES" ]; then
+    log  "$B No .log files to archive  $Y SKIPPING"
+    
+fi  
