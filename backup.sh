@@ -71,3 +71,8 @@ if [ -z "$FILES" ]; then
       exit 1
     fi    
 fi  
+
+
+
+# placed the filebackup.sh  into /usr/bin/backup folder and provide execution permission to the folder
+# and anywhere from command line.
