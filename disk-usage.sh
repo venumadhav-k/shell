@@ -23,4 +23,4 @@ do
 done <<< "$DISK_USAGE"      
 echo -e  "$MESSAGE"
 
-#sh mail.sh "venumadhavk33@gmail.com" "High Disk Usage Alert" "$MESSAGE" "HIGH_DISK_USAGE" "DevOps Team"
+sh mail.sh "venumadhavk33@gmail.com" "High Disk Usage Alert" "$MESSAGE" "HIGH_DISK_USAGE" "DevOps Team"
