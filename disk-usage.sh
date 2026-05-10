@@ -8,7 +8,7 @@ MESSAGE=""
 
 DISK_USAGE=$(df -hT | grep -v Filesystem)
 
-echo "$DISK_USAGE"
+#echo "$DISK_USAGE"
 
 USAGE_THRESHOLD=3
 
@@ -18,7 +18,8 @@ do
    PARTIATION=$(echo $line | awk '{print $7}')
 
    if [ "$USAGE" -ge "$USAGE_THRESHOLD" ]; then
-      MESSAGE+="High Disk Usage on $PARTIATION: $USAGE% \n" 
+      #MESSAGE+="High Disk Usage on $PARTIATION: $USAGE% \n" #for shell new line
+       MESSAGE+="High Disk Usage on $PARTIATION: $USAGE% <br>" # for html new line in a mail
     fi
 done <<< "$DISK_USAGE"      
 echo -e  "$MESSAGE"
