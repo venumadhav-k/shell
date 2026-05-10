@@ -6,7 +6,7 @@ ALERT_TYPE=$4
 #SERVER_IP-$5
 TO_TEAM=$5
 
-FINAL_MESSAGE=$(sed -e "s|/TO_TEAM/$TO_TEAM/|g" -e "s|/ALERT_TYPE/$ALERT_TYPE/|g" -e "s|/MESSAGE/$MESSAGE_BODY/|g" template.html)
+FINAL_MESSAGE=$(sed -e "s|TO_TEAM|$TO_TEAM|g" -e "s|ALERT_TYPE|$ALERT_TYPE|g" -e "s|MESSAGE|$MESSAGE_BODY|g" template.html)
 
 
 
