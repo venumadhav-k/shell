@@ -6,9 +6,9 @@ B="\e[34m"
 N="\e[0m"
 MESSAGE=""
 
-DISk_USAGE=$(df -hT | grep -v Filesystem)
+DISK_USAGE=$(df -hT | grep -v Filesystem)
 
-echo "$DISk_USAGE"
+echo "$DISK_USAGE"
 
 USAGE_THRESHOLD=3
 
@@ -20,7 +20,7 @@ do
    if [ "$USAGE" -ge "$USAGE_THRESHOLD" ]; then
       MESSAGE+="High Disk Usage on $PARTIATION: $USAGE% \n" 
     fi
-done <<< "$DISk_USAGE"      
+done <<< "$DISK_USAGE"      
 echo -e  "$MESSAGE"
 
 #sh mail.sh "venumadhavk33@gmail.com" "High Disk Usage Alert" "$MESSAGE" "HIGH_DISK_USAGE" "DevOps Team"
