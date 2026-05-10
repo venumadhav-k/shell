@@ -4,6 +4,7 @@ R="\e[31m"
 G="\e[32m"
 B="\e[34m"
 N="\e[0m"
+MESSAGE=""
 
 DISk_USAGE=$(df -hT | grep -v Filesystem)
 USAGE_THRESHOLD=3
@@ -18,3 +19,5 @@ do
     fi
 done <<< $DISk_USAGE      
 echo -e  "$MESSAGE"
+
+sh mail.sh "venumadhavk33@gmail.com" "High Disk Usage Alert" "$MESSAGE" "HIGH_DISK_USAGE" "DevOps Team"
